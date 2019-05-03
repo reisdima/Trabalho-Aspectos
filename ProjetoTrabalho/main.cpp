@@ -9,10 +9,11 @@ int main()
 
 
     string str = "teste oi";
+
     stack<char> pilha;
     while(true){
         getline(cin, str);
-        cout << str << endl;
+        cout << str << endl << endl;
 
         if(str[0] == ':'){
 
@@ -51,7 +52,11 @@ int main()
                 tag = tag + str[i];
                 i++;
             }
-            cout << "TAG: " << tag << endl;
+            //Inseriu uma tag
+            if(str[i] == ':'){
+                cout << "TAG: " << tag << endl;
+            }
+
         }
 
     }
