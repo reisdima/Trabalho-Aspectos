@@ -1,13 +1,14 @@
 #include "Tag.h"
 #include <stack>
 
+
 Tag::Tag(string tag)
 {
     primeiro  = NULL;
     stack<string> pilha;
     int i = 0;
-    while(str[i] != '\0'){
-        if(str[i] == '+'){
+    while(tag[i] != '\0'){
+        if(tag[i] == '+'){
             if(!pilha.empty()){
                 string a = pilha.top();
                 pilha.pop();
@@ -16,7 +17,7 @@ Tag::Tag(string tag)
                 i++;
             }
         }
-        else if(str[i] == '*'){
+        else if(tag[i] == '*'){
 
         }
         else{
@@ -31,17 +32,17 @@ Tag::~Tag()
 }
 
 void Tag::InserirElemento(string a, string b){
-    ElementoTag *a = new ElementoTag(a);
-    ElementoTag *b = new ElementoTag(b);
+    ElementoTag *first = new ElementoTag(a);
+    ElementoTag *second = new ElementoTag(b);
 
-    a->SetProx(b);
+    first->SetProx(second);
     if(primeiro == NULL){
-        primeiro = a;
+        primeiro = first;
     }
     else{
         ElementoTag *aux = primeiro;
         while(aux->GetProx() != NULL)
             aux = aux->GetProx();
-        aux->SetProx(a);
+        aux->SetProx(first);
     }
 }

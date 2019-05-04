@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string> //string
 #include <stack> //pilha
+#include <fstream>
 
 using namespace std;
 
@@ -8,39 +9,97 @@ int main()
 {
 
 
+
+
+    fstream arquivo;
+
+
     string str = "teste oi";
 
     stack<char> pilha;
     while(true){
+        int i = 0;
         getline(cin, str);
         cout << str << endl << endl;
 
-        if(str[0] == ':'){
-
+        if(str[i] == ':'){
+            i++;
             //realiza a divisão em tags da string do arquivo informado
-            if(str[1] == 'f'){
-                cout << "teste" << endl;
+            if(str[i] == 'f'){
+                i = i + 2;
+                string path = ""; //nome do arquivo
+                while(str[i] != '\0'){
+                    path += str[i];
+                    i++;
+                }
+                arquivo.open(path.c_str());
+                if(arquivo.is_open()){
+                    //Execução se o arquivo abriu
+                    cout << "Arquivo abriu" << endl;
+                }
+                else{
+                    //Erro ao tentar abrir o arquivo
+                }
             }
             //carrega um arquivo com definições de tags
-            else if(str[1] == 'l'){
-
+            else if(str[i] == 'l'){
+                i = i + 2;
+                string path = ""; //nome do arquivo
+                while(str[i] != '\0'){
+                    path += str[i];
+                    i++;
+                }
+                arquivo.open(path.c_str());
+                if(arquivo.is_open()){
+                    //Execução se o arquivo abriu
+                    cout << "Arquivo abriu" << endl;
+                }
+                else{
+                    //Erro ao tentar abrir o arquivo
+                }
             }
             //especifica o caminho do arquivo de saída para a divisão em tags
-            else if(str[1] == 'o'){
-
+            else if(str[i] == 'o'){
+                i = i + 2;
+                string path = ""; //nome do arquivo
+                while(str[i] != '\0'){
+                    path += str[i];
+                    i++;
+                }
+                arquivo.open(path.c_str(), fstream::out);
+                if(arquivo.is_open()){
+                    //Execução se o arquivo abriu
+                    cout << "Arquivo abriu" << endl;
+                }
+                else{
+                    //Erro ao tentar abrir o arquivo
+                }
             }
             //realiza a divisão em tags da entrada informada
-            else if(str[1] == 'p'){
+            else if(str[i] == 'p'){
 
             }
             //Sair do programa
-            else if(str[1] == 'q'){
+            else if(str[i] == 'q'){
                 cout << "Saiu do programa" << endl;
                 break;
             }
             //salvar as tags
-            else if(str[1] == 's'){
-
+            else if(str[i] == 's'){
+                i = i + 2;
+                string path = ""; //nome do arquivo
+                while(str[i] != '\0'){
+                    path += str[i];
+                    i++;
+                }
+                arquivo.open(path.c_str(), fstream::out);
+                if(arquivo.is_open()){
+                    //Execução se o arquivo abriu
+                    cout << "Arquivo abriu" << endl;
+                }
+                else{
+                    //Erro ao tentar abrir o arquivo
+                }
             }
 
         }
@@ -60,5 +119,6 @@ int main()
         }
 
     }
+
     return 0;
 }

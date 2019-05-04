@@ -1,8 +1,9 @@
 #ifndef TAG_H
 #define TAG_H
 #include <string>
-//Está dando erro
-#include <ElementoTag.h>
+#include "ElementoTag.h"
+
+
 using namespace std;
 
 class Tag
@@ -14,7 +15,7 @@ public:
 
 private:
     ElementoTag *primeiro;
-    void nserirElemento(string a, string b);
+    void InserirElemento(string a, string b);
 
 };
 
