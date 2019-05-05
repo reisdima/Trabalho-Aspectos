@@ -16,5 +16,10 @@ void ElementoTag::SetProx(ElementoTag *p){
 }
 
 ElementoTag* ElementoTag::GetProx(){
+    return prox;
+}
 
+
+string ElementoTag::GetValor(){
+    return valor;
 }

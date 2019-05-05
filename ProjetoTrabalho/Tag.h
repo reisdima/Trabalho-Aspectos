@@ -12,6 +12,8 @@ public:
     Tag(string tag);
     ~Tag();
 
+    void PrintTag();
+
 
 private:
     ElementoTag *primeiro;

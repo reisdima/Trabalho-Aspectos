@@ -2,6 +2,7 @@
 #include <string> //string
 #include <stack> //pilha
 #include <fstream>
+#include "Tag.h"
 
 using namespace std;
 
@@ -10,7 +11,12 @@ int main()
 
 
 
+    string str;
+    getline(cin, str);
+    Tag *tag = new Tag(str);
+    tag->PrintTag();
 
+/*
     fstream arquivo;
 
 
@@ -119,6 +125,6 @@ int main()
         }
 
     }
-
+*/
     return 0;
 }

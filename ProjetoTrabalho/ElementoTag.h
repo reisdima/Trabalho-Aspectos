@@ -15,6 +15,8 @@ public:
     void SetProx(ElementoTag *p);
     ElementoTag* GetProx();
 
+    string GetValor();
+
 private:
     string valor;
     ElementoTag *prox;
