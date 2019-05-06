@@ -13,6 +13,7 @@ public:
     ~Tag();
 
     void PrintTag();
+    void CriarTag(string str);
 
 
 private:
