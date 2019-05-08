@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string> //string
 #include <stack> //pilha
+#include <list>
 #include <fstream>
 #include "Tag.h"
+#include "Automato.h"
 
 using namespace std;
 
@@ -148,6 +150,8 @@ using namespace std;
                         i++;
                     }
                     cout << "Expressao regular:  " << expressao << endl;
+                    Automato* teste = new Automato();
+                    teste->setAlfabeto(expressao);
                 }
             }
 
