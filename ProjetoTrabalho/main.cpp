@@ -76,6 +76,7 @@ int main()
             else if(str[i] == 'o'){
                 i++;
                 if(str[i] == ' '){
+                    i++;
                     string path = ""; //nome do arquivo
                     while(str[i] != '\0'){
                         path += str[i];
@@ -94,6 +95,9 @@ int main()
             //realiza a divisão em tags da entrada informada
             else if(str[i] == 'p'){
 
+#include <iostream>
+
+using namespace std;
             }
             //Sair do programa
             else if(str[i] == 'q'){
@@ -105,19 +109,22 @@ int main()
             }
             //salvar as tags
             else if(str[i] == 's'){
-                i = i + 2;
-                string path = ""; //nome do arquivo
-                while(str[i] != '\0'){
-                    path += str[i];
+                i++;
+                if(str[i] == ' '){
                     i++;
-                }
-                arquivo.open(path.c_str(), fstream::out);
-                if(arquivo.is_open()){
-                    //Execução se o arquivo abriu
-                    cout << "Arquivo abriu" << endl;
-                }
-                else{
-                    //Erro ao tentar abrir o arquivo
+                    string path = ""; //nome do arquivo
+                    while(str[i] != '\0'){
+                        path += str[i];
+                        i++;
+                    }
+                    arquivo.open(path.c_str(), fstream::out);
+                    if(arquivo.is_open()){
+                        //Execução se o arquivo abriu
+                        cout << "Arquivo abriu" << endl;
+                    }
+                    else{
+                        //Erro ao tentar abrir o arquivo
+                    }
                 }
             }
 
@@ -132,7 +139,16 @@ int main()
             }
             //Inseriu uma tag
             if(str[i] == ':'){
-                cout << "TAG: " << tag << endl;
+                i++;
+                if(str[i] == ' '){
+                    cout << "TAG: " << tag << endl;
+                    string expressao = "";
+                    while(str[i] != '\0'){
+                        expressao += str[i];
+                        i++;
+                    }
+                    cout << "Expressao regular:  " << expressao << endl;
+                }
             }
 
         }

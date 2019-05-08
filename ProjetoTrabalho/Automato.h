@@ -1,6 +1,8 @@
 #ifndef AUTOMATO_H
 #define AUTOMATO_H
+#include <iostream>
 
+using namespace std;
 
 class Automato
 {

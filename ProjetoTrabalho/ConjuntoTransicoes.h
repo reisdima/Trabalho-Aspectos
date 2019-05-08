@@ -1,5 +1,8 @@
 #ifndef CONJUNTOTRANSICOES_H
 #define CONJUNTOTRANSICOES_H
+#include <iostream>
+
+using namespace std;
 
 
 class ConjuntoTransicoes
