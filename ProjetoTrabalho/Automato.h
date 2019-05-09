@@ -2,23 +2,29 @@
 #define AUTOMATO_H
 #include <iostream>
 #include <list>
+#include "Transicao.h"
 
 using namespace std;
 
 class Automato
 {
-    public:
-        Automato();
-        ~Automato();
-        void setAlfabeto(string expressao);
+public:
+    Automato(string expressao);
+    ~Automato();
+    void SetAlfabeto();
+    bool ValidaExpressao();
 
+    void ExibirAlfabeto();
+    string GetExpressao();
 
+private:
+    string expressao;
+    list<char> alfabeto;
+    list<string> conjuntoEstados;
+    string estadoInicial;
+    string nomeTag;
+    list<Transicao> conjuntoTransicao;
 
-    private:
-        list<char> alfabeto;
-        string conjuntoEstados[];
-        string estadoInicial[];
-        string tag;
 
 };
 

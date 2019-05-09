@@ -8,6 +8,21 @@
 
 using namespace std;
 
+
+
+void CriaTag(string expressao, list<Automato> *listaAutomatos){
+    Automato* automato = new Automato(expressao);
+    if(automato->ValidaExpressao()){
+        cout << "Expressao valida" << endl;
+        listaAutomatos->push_back(*automato);
+    }
+    else{
+        cout << "Expressao nao eh valida" << endl;
+        //apagar automato criado
+    }
+}
+
+
 int main()
 {
 
@@ -18,9 +33,8 @@ int main()
     Tag *tag = new Tag(str);
     tag->PrintTag();*/
 
-
     fstream arquivo;
-
+    list<Automato> listaAutomatos;
 
     string str = "teste oi";
 
@@ -59,15 +73,23 @@ int main()
                 i++;
                 if(str[i] == ' '){
                     i++;
-                    string path = ""; //nome do arquivo
+                    string aux = ""; //nome do arquivo
                     while(str[i] != '\0'){
-                        path += str[i];
+                        aux += str[i];
                         i++;
                     }
-                    arquivo.open(path.c_str());
+                    arquivo.open(aux.c_str());
                     if(arquivo.is_open()){
                         //Execução se o arquivo abriu
                         cout << "Arquivo abriu" << endl;
+                        while(!arquivo.eof()){
+
+                            getline(arquivo, aux);
+                            cout << aux << endl;
+                            CriaTag(aux, &listaAutomatos);
+                        }
+
+
                     }
                     else{
                         //Erro ao tentar abrir o arquivo
@@ -97,9 +119,7 @@ int main()
             //realiza a divisão em tags da entrada informada
             else if(str[i] == 'p'){
 
-#include <iostream>
 
-using namespace std;
             }
             //Sair do programa
             else if(str[i] == 'q'){
@@ -114,15 +134,22 @@ using namespace std;
                 i++;
                 if(str[i] == ' '){
                     i++;
-                    string path = ""; //nome do arquivo
+                    string aux = ""; //nome do arquivo
                     while(str[i] != '\0'){
-                        path += str[i];
+                        aux += str[i];
                         i++;
                     }
-                    arquivo.open(path.c_str(), fstream::out);
+                    arquivo.open(aux.c_str(), fstream::out);
                     if(arquivo.is_open()){
                         //Execução se o arquivo abriu
                         cout << "Arquivo abriu" << endl;
+                        list<Automato>::iterator it;
+                        for(it = listaAutomatos.begin(); it != listaAutomatos.end(); it++){
+                            aux = it->GetExpressao();
+                            cout << "Aux: " << aux << endl;
+                            arquivo << aux << "\n";
+                        }
+                        arquivo.close();
                     }
                     else{
                         //Erro ao tentar abrir o arquivo
@@ -143,18 +170,17 @@ using namespace std;
             if(str[i] == ':'){
                 i++;
                 if(str[i] == ' '){
+                    i++;
                     cout << "TAG: " << tag << endl;
                     string expressao = "";
                     while(str[i] != '\0'){
                         expressao += str[i];
                         i++;
                     }
-                    cout << "Expressao regular:  " << expressao << endl;
-                    Automato* teste = new Automato();
-                    teste->setAlfabeto(expressao);
+                    cout << "Expressao regular:" << expressao << endl;
+                    CriaTag(expressao, &listaAutomatos);
                 }
             }
-
         }
 
     }
