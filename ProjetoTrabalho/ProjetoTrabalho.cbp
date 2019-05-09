@@ -34,10 +34,6 @@
 		</Compiler>
 		<Unit filename="Automato.cpp" />
 		<Unit filename="Automato.h" />
-		<Unit filename="ElementoTag.cpp" />
-		<Unit filename="ElementoTag.h" />
-		<Unit filename="Tag.cpp" />
-		<Unit filename="Tag.h" />
 		<Unit filename="Transicao.cpp" />
 		<Unit filename="Transicao.h" />
 		<Unit filename="main.cpp" />

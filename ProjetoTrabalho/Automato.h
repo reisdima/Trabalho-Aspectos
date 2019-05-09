@@ -9,15 +9,17 @@ using namespace std;
 class Automato
 {
 public:
-    Automato(string expressao);
+    Automato(string tag, string expressao);
     ~Automato();
-    void SetAlfabeto();
+    void ReconheceAlfabeto();
     bool ValidaExpressao();
 
     void ExibirAlfabeto();
     string GetExpressao();
+    string GetTag();
 
 private:
+    string tag;
     string expressao;
     list<char> alfabeto;
     list<string> conjuntoEstados;

@@ -2,12 +2,11 @@
 #include <list>
 #include <stack>
 
-Automato::Automato(string expressao)
+Automato::Automato(string tag, string expressao)
 {
+    this->tag = tag;
     this->expressao = expressao;
-    SetAlfabeto();
-    //bool a = ValidaExpressao();
-    ExibirAlfabeto();
+    ReconheceAlfabeto();
 
 
 }
@@ -17,7 +16,7 @@ Automato::~Automato()
     //dtor
 }
 
-void Automato::SetAlfabeto(){
+void Automato::ReconheceAlfabeto(){
     list<char>::iterator it;
     for(int i = 0; i < expressao.length(); i++){
         if(expressao[i] != '+' && expressao[i] != '.' && expressao[i] != '*'){
@@ -28,6 +27,7 @@ void Automato::SetAlfabeto(){
     alfabeto.unique();
 
 }
+// função para verificar se a expressão é válida
 
 bool Automato::ValidaExpressao(){
     stack<string> pilha;
@@ -35,7 +35,6 @@ bool Automato::ValidaExpressao(){
     bool valida = true;
 
     while(expressao[i] != '\0'){
-        cout << expressao[i] << " ";
         string aux = "";
         aux += expressao[i];
         if(aux != "+" && aux != "." && aux != "*"){
@@ -61,7 +60,7 @@ bool Automato::ValidaExpressao(){
                 valida = false;
                 break;
             }
-            pilha.push(a+"+"+b);
+            pilha.push(b+"+"+a);
         }
         else if(aux == "."){
             string a;
@@ -83,10 +82,9 @@ bool Automato::ValidaExpressao(){
                 valida = false;
                 break;
             }
-            pilha.push(a+"."+b);
+            pilha.push(b+"."+a);
         }
         else if(aux == "*"){
-                cout << "teste" << endl;
             string a;
             if(!pilha.empty()){
                 a = pilha.top();
@@ -100,14 +98,14 @@ bool Automato::ValidaExpressao(){
         }
         i++;
     }
-    cout << endl;
     string expressao2;
     if(!pilha.empty()){
+            // Teste: cout << expressao2 << endl;
         expressao2 = pilha.top();
         pilha.pop();
     }
     if(pilha.empty() && valida){
-            cout << "Expressao: " << expressao2 << endl;
+            //Teste: cout << "Expressao: " << expressao2 << endl;
         return true;
     }
     else{
@@ -125,4 +123,8 @@ void Automato::ExibirAlfabeto(){
 
 string Automato::GetExpressao(){
     return expressao;
+}
+
+string Automato::GetTag(){
+    return tag;
 }
