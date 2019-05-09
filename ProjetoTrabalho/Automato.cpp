@@ -19,7 +19,7 @@ Automato::~Automato()
 void Automato::ReconheceAlfabeto(){
     list<char>::iterator it;
     for(int i = 0; i < expressao.length(); i++){
-        if(expressao[i] != '+' && expressao[i] != '.' && expressao[i] != '*'){
+        if(expressao[i] != '+' && expressao[i] != '.' && expressao[i] != '*' && expressao[i] != '\\'){
             alfabeto.push_back(expressao[i]);
         }
     }
@@ -37,7 +37,10 @@ bool Automato::ValidaExpressao(){
     while(expressao[i] != '\0'){
         string aux = "";
         aux += expressao[i];
-        if(aux != "+" && aux != "." && aux != "*"){
+        if(aux == "\\"){
+
+        }
+        else if(aux != "+" && aux != "." && aux != "*"){
             pilha.push(aux);
         }
         else if(aux == "+"){
